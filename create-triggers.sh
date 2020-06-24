@@ -46,7 +46,6 @@ fi
 # Apply the yaml to cluster
 cat 01_binding.yaml | sed "s/#APP_NAME/${APP_NAME}/g" | kubectl apply -f -
 cat 02_template.yaml | sed "s/#APP_NAME/${APP_NAME}/g" | sed "s@#PIPELINE_NAME@${PIPELINE_NAME}@g"| sed "s@#DOCKER_IMAGE@${DOCKER_IMAGE}@g"| sed "s@#GIT_REPO_LINK@${GIT_REPO_LINK}@g"| kubectl apply -f -
-cat 02_template.yaml | sed "s/#APP_NAME/${APP_NAME}/g" | sed "s@#PIPELINE_NAME@${PIPELINE_NAME}@g"| sed "s@#DOCKER_IMAGE@${DOCKER_IMAGE}@g"| sed "s@#GIT_REPO_LINK@${GIT_REPO_LINK}@g" > preview.yaml
 cat 03_event_listener.yaml | sed "s/#APP_NAME/${APP_NAME}/g" | kubectl apply -f -
 
 echo "Tekton triggers registered."
