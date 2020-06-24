@@ -1,0 +1,26 @@
+$ tkn pipeline ls
+NAME                       AGE           LAST RUN                          STARTED       DURATION     STATUS
+inventory-management-bff   6 hours ago   inventory-management-bff-lt91i5   3 hours ago   10 minutes   Succeeded
+inventory-management-ui    5 hours ago   inventory-management-ui-w6eim3    3 hours ago   18 minutes   Succeeded
+inventory-svc              6 hours ago   inventory-svc-172e44              6 hours ago   21 minutes   Succeeded
+$ tkn resource ls
+NAME                             TYPE    DETAILS
+inventory-management-bff-git     git     url: https://github.com/rampadc/inventory-management-bff.git
+inventory-management-ui-git      git     url: https://github.com/rampadc/inventory-management-ui.git
+inventory-svc-git                git     url: https://github.com/rampadc/inventory-svc.git
+inventory-management-bff-image   image   url: au.icr.io/testdrive/inventory-management-bff:latest
+inventory-management-ui-image    image   url: au.icr.io/testdrive/inventory-management-ui:latest
+inventory-svc-image              image   url: au.icr.io/testdrive/inventory-svc:latest
+$ ls -ltr
+total 32
+-rw-r--r--  1 cong.nguyen  staff   160 24 Jun 19:48 01_binding.yaml
+-rw-r--r--  1 cong.nguyen  staff   209 24 Jun 19:48 03_event_listener.yaml
+-rw-r--r--  1 cong.nguyen  staff  1060 24 Jun 19:48 02_template.yaml
+-rw-r--r--  1 cong.nguyen  staff  1185 24 Jun 19:49 create-triggers.sh
+$ ./create-triggers.sh inventory-management-ui inventory-management-ui <image path> <git link>
+Registring Tekton triggers...
+triggerbinding.triggers.tekton.dev/inventory-management-ui created
+triggertemplate.triggers.tekton.dev/inventory-management-ui created
+eventlistener.triggers.tekton.dev/inventory-management-ui created
+Tekton triggers registered.
+$ oc expose svc el-inventory-management-ui
