@@ -13,13 +13,13 @@ echo "Depends on jq (https://stedolan.github.io/jq/)"
 APP_NAME=$1
 
 if [[ $# -eq 0 ]] ; then
-  echo "create-trigger.sh {APP_NAME}"
+  echo "create-trigger-jq.sh {APP_NAME}"
   exit
 fi
 
 # input validation
 if [ -z "${APP_NAME}" ]; then
-    echo "Please provide APP_NAME as first parameter"
+    echo "Please provide APP_NAME as the first parameter"
     exit
 fi
 
