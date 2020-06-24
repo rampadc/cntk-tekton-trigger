@@ -1,6 +1,6 @@
 # Purpose
 
-Quick and dirty tekton trigger for IBM Garage Cloud Native Toolkit.
+Quick and dirty tekton trigger for IBM Garage Cloud Native Toolkit. Tested with OpenShift 4.3.
 
 ## Using existing pipeline, resources to extract values and create triggers
 
