@@ -33,3 +33,6 @@ cat 02_template.yaml | sed "s/#APP_NAME/${APP_NAME}/g" | sed "s@#PIPELINE_NAME@$
 cat 03_event_listener.yaml | sed "s/#APP_NAME/${APP_NAME}/g" | kubectl apply -f -
 
 echo "Tekton triggers registered."
+
+oc expose svc el-$APP_NAME
+echo "Exposed service"
